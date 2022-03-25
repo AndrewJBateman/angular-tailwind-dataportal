@@ -1,8 +1,12 @@
 # :zap: Angular Firebase BigQuery
 
 * Angular frontend CRUD operations on Firebase-GCP_BigQuery backend database
+* **Note:** to open web links in a new window use: _ctrl+click on link_
 
-*** Note: to open web links in a new window use: _ctrl+click on link_**
+![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/angular-firebase-bigquery?style=plastic)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/AndrewJBateman/angular-firebase-bigquery?style=plastic)
+![GitHub Repo stars](https://img.shields.io/github/stars/AndrewJBateman/angular-firebase-bigquery?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/AndrewJBateman/angular-firebase-bigquery?style=plastic)
 
 ## :page_facing_up: Table of contents
 
@@ -89,6 +93,10 @@ async function executeQuery(query) {
 
 * [Touwin10: How to have full control of BigQuery CRUD in your Angular application](https://touwin10.com/tutorials/VcitzwiLz1rtQkPhCjK0/how-to-have-full-control-of-bigquery-query-in-your-angular-application.) published Jul 17, 2019 so out of date. Uses Node 8. There is an authentication issue if using Node 10
 
+## :file_folder: License
+
+* This project is licensed under the terms of the MIT license.
+
 ## :envelope: Contact
 
-* Repo created by [ABateman](https://www.andrewbateman.org) - you are welcome to [send me a message](https://andrewbateman.org/contact)
+* Repo created by [ABateman](https://github.com/AndrewJBateman), email: gomezbateman@yahoo.com
