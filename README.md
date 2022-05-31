@@ -34,12 +34,13 @@
 
 ## :signal_strength: Technologies
 
-* [Angular framework v13](https://angular.io/)
+* [Angular framework v4](https://angular.io/)
 * [TailwindCSS v3](https://tailwindcss.com/) CSS framework
 
 ## :floppy_disk: Setup
 
 * Run `npm i` to install dependencies.
+* This frontend requires a backend data source - see `/models/pharma.data.ts` for format, on port `http://localhost:3000`
 * Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## :wrench: Testing
