@@ -1,6 +1,6 @@
 # :zap: Angular Tailwind Data Portal
 
-* Angular app using [Tailwindcss](https://developers.google.com/chart/) components to create simple frontend to display backend data
+* Angular app using [TailwindCSS](https://developers.google.com/chart/) components to create a simple frontend to display backend data
 * **Note:** to open web links in a new window use: _ctrl+click on link_
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/angular-tailwind-dataportal?style=plastic)
@@ -26,7 +26,7 @@
 
 ## :books: General info
 
-* tab
+* tba
 
 ## :camera: Screenshots
 
@@ -35,7 +35,7 @@
 ## :signal_strength: Technologies
 
 * [Angular framework v13](https://angular.io/)
-* [Tailwindcss v3](https://tailwindcss.com/) CSS framework
+* [TailwindCSS v3](https://tailwindcss.com/) CSS framework
 
 ## :floppy_disk: Setup
 

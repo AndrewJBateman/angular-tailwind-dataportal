@@ -6,8 +6,7 @@ import { PharmaData } from './../../models/pharma.data';
 
 @Component({
   selector: 'app-data-grid',
-  templateUrl: './data-grid.component.html',
-  styleUrls: ['./data-grid.component.css']
+  templateUrl: './data-grid.component.html'
 })
 export class DataGridComponent implements OnInit {
   pharmaData$: Observable<PharmaData[]>;
