@@ -1,6 +1,6 @@
 # :zap: Angular Tailwind Data Portal
 
-* Angular app using [TailwindCSS](https://developers.google.com/chart/) components to create a simple frontend to display backend data
+* Angular app using [TailwindCSS](https://developers.google.com/chart/) components & Angular Signals to display backend data
 * **Note:** to open web links in a new window use: _ctrl+click on link_
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/angular-tailwind-dataportal?style=plastic)
@@ -27,6 +27,7 @@
 ## :books: General info
 
 * Data shown on a grid of Tailwind-styled cards
+* Angular Signals used to track the state of changing backend data so rendering can be optimised.
 * Any JSON data object made available on `localhost:3000` can be displayed on the Angular frontend. It is easy to modify the frontend Typescript model and HTML markup to match the JSON object on the backend. I used [drug product JSON data](https://health-products.canada.ca/api/drug/drugproduct/?lang=en&type=json) as test data - see `db.json`
 
 ## :camera: Screenshots
@@ -35,7 +36,8 @@
 
 ## :signal_strength: Technologies
 
-* [Angular framework v15](https://angular.io/)
+* [Angular framework v16](https://angular.io/)
+* [Angular Signals](https://angular.io/guide/signals)
 * [TailwindCSS v3](https://tailwindcss.com/) CSS framework
 * [JSON server](https://www.npmjs.com/package/json-server) used to serve a fake REST API backend on port localhost:3000 to test frontend
 
@@ -43,7 +45,7 @@
 
 * Run `npm i` to install dependencies.
 * This frontend requires a backend data source - see `/models/pharma.data.ts` for format, on port `http://localhost:3000`
-* 'json-server --watch db.json' to run fake backend. Navigate to `http://localhost:3000/api` to see data object.
+* `json-server --watch db.json` to run fake backend. Navigate to `http://localhost:3000/api` to see data object.
 * Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## :wrench: Testing
@@ -52,17 +54,19 @@
 
 ## :computer: Code Examples
 
-* 'data.service.ts' class with HTTP GET request that returns a response body of type PharmData array
+* 'data.service.ts' function to return data array Observable with fetch status and catch errors
 
 ```typescript
-export class DataService {
-
-  constructor(private http: HttpClient) { }
-
-  getPharmaData(): Observable<PharmaData[]> {
-    return this.http.get<PharmaData[]>(`${baseUrl}/api`)
+loadData(): Observable<State<Array<IPharmaData>> | State<null>> {
+    return this.http.get<Array<IPharmaData>>(`${this.baseUrl}/api`).pipe(
+      map((data) => {
+        return new State<Array<IPharmaData>>('OK', data, undefined);
+      }),
+      catchError((error) => {
+        return of(new State<Array<IPharmaData>>('ERROR', undefined, error));
+      })
+    );
   }
-}
 ```
 
 ## :cool: Features
@@ -76,7 +80,6 @@ export class DataService {
 
 ## :clap: Inspiration
 
-* [LogRocket: Types vs. interfaces in TypeScript](https://blog.logrocket.com/types-vs-interfaces-in-typescript/)
 * [Gouv of Canada API: Drug Product Database - All Files - Drug Product](https://health-products.canada.ca/api/drug/drugproduct/?lang=en&type=json)
 
 ## :file_folder: License
@@ -85,4 +88,4 @@ export class DataService {
 
 ## :envelope: Contact
 
-* Repo created by [ABateman](https://github.com/AndrewJBateman), email: gomezbateman@gmail.com
+* Repo created by [ABateman](https://github.com/AndrewJBateman), email: `gomezbateman@gmail.com`

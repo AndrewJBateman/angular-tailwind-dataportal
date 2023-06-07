@@ -17,13 +17,14 @@ export class DataService {
 
   constructor(private http: HttpClient) {}
 
+  // function to return data array Observable with fetch status and catch errors
   loadData(): Observable<State<Array<IPharmaData>> | State<null>> {
     return this.http.get<Array<IPharmaData>>(`${this.baseUrl}/api`).pipe(
       map((data) => {
         return new State<Array<IPharmaData>>('OK', data, undefined);
       }),
       catchError((error) => {
-        return of(new State<Array<IPharmaData>>('ERROR', error, undefined));
+        return of(new State<Array<IPharmaData>>('ERROR', undefined, error));
       })
     );
   }
