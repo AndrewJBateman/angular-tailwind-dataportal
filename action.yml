@@ -1,0 +1,5 @@
+name: AJB Dataportal action
+description: 'A test action to track changes in my dataportal'
+runs:
+  using: node16
+  main: src/index.js
