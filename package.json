@@ -21,16 +21,16 @@
     "@angular/router": "^17.0.7",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.2",
-    "zone.js": "~0.14.0"
+    "zone.js": "~0.14.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.7",
     "@angular/cli": "^17.0.7",
     "@angular/compiler-cli": "^17.0.7",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^9.2.1",
-    "@types/jasmine": "~5.1.0",
-    "@types/node": "^20.8.6",
+    "@semantic-release/github": "^9.2.5",
+    "@types/jasmine": "~5.1.4",
+    "@types/node": "^20.10.5",
     "autoprefixer": "^10.4.16",
     "jasmine-core": "~5.1.1",
     "karma": "~6.4.2",
@@ -38,9 +38,9 @@
     "karma-coverage": "~2.2.1",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "postcss": "^8.4.31",
-    "semantic-release": "^22.0.5",
-    "tailwindcss": "^3.3.3",
+    "postcss": "^8.4.32",
+    "semantic-release": "^22.0.12",
+    "tailwindcss": "^3.3.7",
     "typescript": "~5.2.2"
   }
 }
