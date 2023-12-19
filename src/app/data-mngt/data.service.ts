@@ -1,30 +1,46 @@
 import { Injectable, Signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, of, tap } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, map, of, shareReplay } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { IPharmaData } from './pharma.data';
-import { State } from './state.model';
+import { State, StatusNotification } from './state.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
+/**
+ * Data service class that handles fetching pharma data.
+ * Exports pharmaDataState signal initialized to loadData() observable.
+ * loadData() makes HTTP request to API_URL, handles response with OK state or ERROR state.
+ * Shares replay of 1, maps to State object with status, data, error.
+ * Catches errors and maps to State with ERROR status and error.
+ */
 export class DataService {
-  private baseUrl = 'http://localhost:3000';
-
-  data: Signal<State<Array<IPharmaData>> | State<null> | undefined> = toSignal(
-    this.loadData()
-  );
+  pharmaDataState: Signal<State<IPharmaData[]> | State<null> | undefined> =
+    toSignal(this.loadData());
 
   constructor(private http: HttpClient) {}
 
-  // function to return data array Observable with fetch status and catch errors
   loadData(): Observable<State<Array<IPharmaData>> | State<null>> {
-    return this.http.get<Array<IPharmaData>>(`${this.baseUrl}/api`).pipe(
+    const API_URL = environment.API_URL;
+    return this.http.get<Array<IPharmaData>>(`${API_URL}/api`).pipe(
+      shareReplay(1),
       map((data) => {
-        return new State<Array<IPharmaData>>('OK', data, undefined);
+        return new State<Array<IPharmaData>>(
+          StatusNotification.OK,
+          data,
+          undefined
+        );
       }),
-      catchError((error) => {
-        return of(new State<Array<IPharmaData>>('ERROR', undefined, error));
+      catchError((error: HttpErrorResponse) => {
+        return of(
+          new State<Array<IPharmaData>>(
+            StatusNotification.ERROR,
+            undefined,
+            error
+          )
+        );
       })
     );
   }

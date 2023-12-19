@@ -1,11 +1,14 @@
+<!-- Sets up a responsive grid container with margins. The container centers
+content horizontally with margin auto. The mt-4 adds margin to the top to
+separate from previous content. -->
 <div class="container mx-auto mt-4">
   <div
     class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-    *ngIf="dataService.data()?.status == 'OK'"
+    *ngIf="dataService.pharmaDataState()?.value"
   >
     <div
       *ngFor="
-        let data of this.dataService.data()?.value;
+        let data of this.dataService.pharmaDataState()?.value;
         trackBy: dataByCode;
         index as index
       "

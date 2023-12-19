@@ -1,3 +1,10 @@
+/**
+ * Imports Angular core functionality needed for the component.
+ *
+ * Component - Enables Angular component decorator.
+ * OnInit - Implements lifecycle hook interface.
+ * inject - Dependency injection utility.
+ */
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 

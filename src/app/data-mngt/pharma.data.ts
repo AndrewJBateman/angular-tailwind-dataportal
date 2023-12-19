@@ -1,3 +1,9 @@
+/**
+ * Interface for Pharma data model
+ * Contains properties for drug code, class name, identification number,
+ * brand name, descriptor, number of active ingredients, AI group number,
+ * company name, and last update date
+ */
 export interface IPharmaData {
   drug_code?: number;
   class_name?: string;
