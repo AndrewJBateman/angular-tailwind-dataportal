@@ -36,7 +36,7 @@
 
 ## :signal_strength: Technologies
 
-* [Angular framework v16](https://angular.io/)
+* [Angular framework v17](https://angular.io/)
 * [Angular Signals](https://angular.io/guide/signals)
 * [TailwindCSS v3](https://tailwindcss.com/) CSS framework
 * [JSON server](https://www.npmjs.com/package/json-server) used to serve a fake REST API backend on port localhost:3000 to test frontend
@@ -57,7 +57,7 @@
 * 'data.service.ts' function to return data array Observable with fetch status and catch errors
 
 ```typescript
-loadData(): Observable<State<Array<IPharmaData>> | State<null>> {
+getPharmaData(): Observable<State<Array<IPharmaData>> | State<null>> {
     return this.http.get<Array<IPharmaData>>(`${this.baseUrl}/api`).pipe(
       map((data) => {
         return new State<Array<IPharmaData>>('OK', data, undefined);
