@@ -2,51 +2,55 @@
 content horizontally with margin auto. The mt-4 adds margin to the top to
 separate from previous content. -->
 <div class="container mx-auto mt-4">
-  <div
-    class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-    *ngIf="dataService.pharmaDataState()?.value"
-  >
+  @if (dataService.pharmaDataState()?.value) {
     <div
-      *ngFor="
-        let data of this.dataService.pharmaDataState()?.value;
-        trackBy: dataByCode;
-        index as index
-      "
-    >
-      <div
-        class="m-2 transition-all duration-200 transform border border-gray-400 rounded-lg cursor-pointer card hover:shadow-md hover:border-opacity-0 hover:-translate-y-1"
+      class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
       >
-        <div class="m-3">
-          <h3 class="mb-2 underline text-md text-decoration-line:">
-            {{ data.brand_name }}
-            <span
-              class="inline float-right px-2 font-mono text-sm text-teal-800 align-top bg-teal-100 rounded-full animate-pulse"
-              >{{ data.drug_code }}</span
-            >
-          </h3>
-          <p
-            class="font-mono text-sm font-light text-gray-700 transition-all duration-200 hover:text-gray-900"
+      @for (
+        data of this.dataService.pharmaDataState()?.value; track dataByCode(index,
+        data); let index = $index) {
+        <div
           >
-            Class: <span class="italic font-style:">{{ data.class_name }}</span
-            ><br />
-            Drug ID:
-            <span class="italic font-style:">{{
-              data.drug_identification_number
-            }}</span
-            ><br />
-            AIs: <span class="italic font-style:">{{ data.number_of_ais }}</span
-            ><br />
-            AI Group:
-            <span class="italic font-style:">{{ data.ai_group_no }}</span
-            ><br />
-            Company:
-            <span class="italic font-style:">{{ data.company_name }}</span
-            ><br />
-            Last Update:
-            <span class="italic font-style:">{{ data.last_update_date }}</span>
-          </p>
+          <div
+            class="m-2 transition-all duration-200 transform border border-gray-400 rounded-lg cursor-pointer card hover:shadow-md hover:border-opacity-0 hover:-translate-y-1"
+            >
+            <div class="m-3">
+              <h3 class="mb-2 underline text-md text-decoration-line:">
+                {{ data.brand_name }}
+                <span
+                  class="inline float-right px-2 font-mono text-sm text-teal-800 align-top bg-teal-100 rounded-full animate-pulse"
+                  >{{ data.drug_code }}</span
+                  >
+                </h3>
+                <p
+                  class="font-mono text-sm font-light text-gray-700 transition-all duration-200 hover:text-gray-900"
+                  >
+                  Class: <span class="italic font-style:">{{ data.class_name }}</span
+                  ><br />
+                  Drug ID:
+                  <span class="italic font-style:">{{
+                    data.drug_identification_number
+                    }}</span
+                    ><br />
+                    AIs: <span class="italic font-style:">{{ data.number_of_ais }}</span
+                    ><br />
+                    AI Group:
+                    <span class="italic font-style:">{{ data.ai_group_no }}</span
+                      ><br />
+                      Company:
+                      <span class="italic font-style:">{{ data.company_name }}</span
+                        ><br />
+                        Last Update:
+                        <span class="italic font-style:">{{ data.last_update_date }}</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          } @else {
+            <div class="text-center">
+              <h3>No Data</h3>
+            </div>
+          }
         </div>
-      </div>
-    </div>
-  </div>
-</div>

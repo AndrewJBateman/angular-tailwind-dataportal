@@ -6,7 +6,7 @@
  * inject - Dependency injection utility.
  */
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 import { DataService } from '../data.service';
 import { IPharmaData } from '../pharma.data';
@@ -14,7 +14,7 @@ import { IPharmaData } from '../pharma.data';
 @Component({
   selector: 'app-data-grid',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './data-grid.component.html',
 })
 export class DataGridComponent implements OnInit {
