@@ -5,7 +5,7 @@
  * OnInit - Implements lifecycle hook interface.
  * inject - Dependency injection utility.
  */
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 
 import { DataService } from '../data.service';
@@ -17,10 +17,8 @@ import { IPharmaData } from '../pharma.data';
   imports: [],
   templateUrl: './data-grid.component.html',
 })
-export class DataGridComponent implements OnInit {
+export class DataGridComponent {
   public dataService = inject(DataService);
-
-  ngOnInit(): void {}
 
   dataByCode(index: number, pharmaData: IPharmaData) {
     return pharmaData.drug_code;
