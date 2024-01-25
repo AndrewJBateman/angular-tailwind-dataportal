@@ -13,7 +13,7 @@ import { environment } from '../../environments/environment';
  * Data service class that handles fetching pharma data.
  * Exports pharmaDataState signal initialized to loadData() observable.
  * loadData() makes HTTP request to API_URL, handles response with OK state or ERROR state.
- * Shares replay of 1, maps to State object with status, data, error.
+ * Share to multicast original Observable, maps to State object with status, data, error.
  * Catches errors and maps to State with ERROR status and error.
  */
 export class DataService {

@@ -45,7 +45,7 @@
 
 * Run `npm i` to install dependencies.
 * This frontend requires a backend data source - see `/models/pharma.data.ts` for format, on port `http://localhost:3000`
-* `json-server --watch db.json` to run fake backend. Navigate to `http://localhost:3000/api` to see data object.
+* `npm run server` to run fake backend. Navigate to `http://localhost:3000/api` to see data object.
 * Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## :wrench: Testing
@@ -57,13 +57,24 @@
 * 'data.service.ts' function to return data array Observable with fetch status and catch errors
 
 ```typescript
-getPharmaData(): Observable<State<Array<IPharmaData>> | State<null>> {
-    return this.http.get<Array<IPharmaData>>(`${this.baseUrl}/api`).pipe(
+loadData(): Observable<State<Array<IPharmaData>> | State<null>> {
+    return this.http.get<Array<IPharmaData>>(`${environment.API_URL}/api`).pipe(
+      share(),
       map((data) => {
-        return new State<Array<IPharmaData>>('OK', data, undefined);
+        return new State<Array<IPharmaData>>(
+          StatusNotification.OK,
+          data,
+          null
+        );
       }),
-      catchError((error) => {
-        return of(new State<Array<IPharmaData>>('ERROR', undefined, error));
+      catchError((error: HttpErrorResponse) => {
+        return throwError(
+          new State<Array<IPharmaData>>(
+            StatusNotification.ERROR,
+            undefined,
+            error
+          )
+        );
       })
     );
   }
@@ -76,7 +87,7 @@ getPharmaData(): Observable<State<Array<IPharmaData>> | State<null>> {
 ## :clipboard: Status & To-Do List
 
 * Status: working
-* To-Do: add navbar, pages...
+* To-Do: Nothing
 
 ## :clap: Inspiration
 
